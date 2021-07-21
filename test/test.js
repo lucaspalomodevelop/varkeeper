@@ -24,10 +24,10 @@ describe('varkeeper', () => {
             expect(varkeeper.getprop('array')).to.be.an('array');
         });
         it('will slice a array-prop', () => {
-            varkeeper.setprop('array', [1,2,3,4]);
+            varkeeper.setprop('array', [1, 2, 3, 4]);
             let x = varkeeper.getprop('array');
-            let y = x.slice(0,2);
-            expect(y).to.be.eql([1,2]);
+            let y = x.slice(0, 2);
+            expect(y).to.be.eql([1, 2]);
         });
 
     });
@@ -50,7 +50,7 @@ describe('varkeeper', () => {
     describe('onchange', () => {
         it('will call funtion by change prop value', () => {
             let a = false;
-            varkeeper.onchange('test', () => {a = true});
+            varkeeper.onchange('test', () => { a = true });
             varkeeper.setprop('test', 'value');
             assert.equal(a, true);
         });

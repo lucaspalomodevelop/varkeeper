@@ -8,9 +8,10 @@ gulp.task('build', function(done) {
     gulp.src(Src)
     .pipe(minify({
         ext:{
-            src:'-debug.js',
+
             min:'.js'
         },
+        noSource: true,
         exclude: ['tasks'],
         ignoreFiles: ['.combo.js', '-min.js']
     }))

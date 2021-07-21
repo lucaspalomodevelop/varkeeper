@@ -7,7 +7,19 @@ function setprop(name, value) {
         value = value();
     }
 
-    props[name] = value;
+
+   var myprop = props.find(x => x.name === name)
+
+
+   if(myprop != undefined)
+   {
+     myprop.value = value;
+   }
+   else
+   {
+    props.push( {name: name, value: value});
+   }
+
     onchange_func(name, value);
    
 }
@@ -20,9 +32,21 @@ function getEventsFromTypeAndName(name,type) {
     return event;
 }
 
-
 function getprop(name) {
-    return props[name];
+    let result = props.find(x => x.name === name)
+    if(result != undefined)
+    {
+        return result.value;
+    }
+    else
+    {
+        return undefined;
+    }
+}
+
+function deleteprop(name) {
+    let index = props.indexOf(props.find(x => x.name === name));
+    props.splice(index,1);
 }
 
 function onchange(name, callback) {
@@ -40,4 +64,5 @@ function onchange_func(name,value){
 }
 
 
-module.exports = { setprop, getprop, onchange }
+
+module.exports = { setprop, getprop, onchange, deleteprop }

@@ -39,6 +39,14 @@ describe('varkeeper', () => {
             assert.equal(varkeeper.getprop('test1'), undefined);
         });
     });
+
+    describe('deleteprop', () => {
+        it('will detelte prop', () => {
+            varkeeper.setprop('test', 'value');
+            varkeeper.deleteprop('test');
+            assert.equal(varkeeper.getprop('test'), undefined);
+        });
+    });
     describe('onchange', () => {
         it('will call funtion by change prop value', () => {
             let a = false;

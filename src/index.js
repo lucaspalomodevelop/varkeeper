@@ -1,6 +1,40 @@
 let props = [];
 let events = [];
 
+// Prop = function(name, value = undefined) {
+//     this._init(name, value);
+//   //  props.push({ name: name, value: value });
+// }
+// Prop.prototype = {
+
+//   constructor: Prop,
+//   name: null,
+//   value: null,
+//   _init: function(name, value = undefined) {
+
+//     if(value === undefined && props.find(x => x.name === name) !== undefined)
+//     {
+//         myprop = props.find(x => x.name === name);
+//         console.log(myprop)
+//         setprop(name, myprop.value);    
+//     }
+//     else
+//     {
+//         setprop(name, value);
+//     }
+//     // 
+//     // this.value = value;
+
+//   },
+//    set: function (value) {setprop(this.name, value);},
+//    get: function () {return getprop(this.name);},
+//    delete: function () {deleteprop(this.name);},
+//     on: function(eventname, callback) {
+//     events.push({ type: eventname, callback: callback, name: this.name });
+//   }
+// }
+
+
 function setprop(name, value) {
 
     if (value instanceof Function) {
@@ -17,7 +51,8 @@ function setprop(name, value) {
    }
    else
    {
-    props.push( {name: name, value: value});
+   // props.push(new Prop(name, value));
+    props.push({ name: name, value: value });
    }
 
     onchange_func(name, value);
@@ -33,6 +68,7 @@ function getEventsFromTypeAndName(name,type) {
 }
 
 function getprop(name) {
+    console.log(props)
     let result = props.find(x => x.name === name)
     if(result != undefined)
     {

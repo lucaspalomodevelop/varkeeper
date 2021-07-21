@@ -6,11 +6,14 @@ const assertArrays = require('chai-arrays');
 chai.use(assertArrays);
 let varkeeper = require("../src/index.js");
 
+
+
 describe('varkeeper', () => {
     describe('setprop', () => {
         it('will set a prop', () => {
-            varkeeper.setprop('test', 'value');
-            assert.equal(varkeeper.getprop('test'), 'value');
+           varkeeper.setprop('test', 'value');
+            //let a = new varkeeper.Prop('test')
+            assert.equal(varkeeper.getprop("test"), 'value');
         });
         it('will set a prop as array', () => {
             varkeeper.setprop('array', []);
@@ -55,5 +58,24 @@ describe('varkeeper', () => {
             assert.equal(a, true);
         });
     });
+
+    describe.skip('varkeeper porp class', () => {
+        it("", () => {
+            console.log("varkeeper")
+            varkeeper.setprop("array","blub")
+            varkeeper.getprop("array");
+            console.log("prop class")
+            var a = new varkeeper.Prop("array",undefined)
+            a.get();
+            a.on("onchange",()=>{
+                console.log("onchange")
+            })
+            console.log("first",a.get());
+            a.set("B")
+            console.log(a.get());
+            varkeeper.setprop("array","C")
+            console.log(a.get());
+        })
+    })
 
 });

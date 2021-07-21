@@ -27,9 +27,7 @@ describe('varkeeper', () => {
             varkeeper.setprop('array', [1,2,3,4]);
             let x = varkeeper.getprop('array');
             let y = x.slice(0,2);
-            console.log(x);
-            // varkeeper.setprop('array', varkeeper.getprop('array').slice(0,3));
-            console.log(varkeeper.getprop('array'));
+            expect(y).to.be.eql([1,2]);
         });
 
     });

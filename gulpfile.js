@@ -2,7 +2,7 @@ const { doesNotThrow } = require('assert');
 const gulp = require('gulp'); 
 const minify = require('gulp-minify');
 
-gulp.task('default', function(done) {
+gulp.task('build', function(done) {
     var Src = './src/*js',
     Dst = 'dist';
     gulp.src(Src)

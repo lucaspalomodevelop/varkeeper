@@ -1,0 +1,33 @@
+{
+  "name": "varkeeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "mocha": "^9.0.2",
+    "chai": "^4.3.4",
+    "chai-arrays": "^2.2.0",
+    "gulp": "^4.0.2",
+    "gulp-minify": "^3.1.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaspalomodevelop/varkeeper.git"
+  },
+  "keywords": [
+    "varkeeper",
+    "var",
+    "global",
+    "global var"
+  ],
+  "author": "lucasdevelop",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/lucaspalomodevelop/varkeeper/issues"
+  },
+  "homepage": "https://github.com/lucaspalomodevelop/varkeeper#readme"
+}

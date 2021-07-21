@@ -47,13 +47,5 @@ describe('varkeeper', () => {
             assert.equal(a, true);
         });
     });
-    describe('ifis', () => {
-        it('will call funtion by change prop value', (done) => {
-            varkeeper.ifis('test', varkeeper.getprop('test').length > 1 , (value) => {
-                done();
-            });
-            varkeeper.setprop('test', [1,2,3]);
-            throw new Error();
-        });
-    });
+
 });

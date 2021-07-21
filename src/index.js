@@ -9,7 +9,6 @@ function setprop(name, value) {
 
     props[name] = value;
     onchange_func(name, value);
-    ifis_func(name, value)
    
 }
 
@@ -40,19 +39,5 @@ function onchange_func(name,value){
     }
 }
 
-function ifis(name, condition , callback) {
-    events.push({ name: name, callback: callback, condition: condition, type: 'ifis' });
-}
-function ifis_func(name, value) {
-    let ifisevent = getEventsFromTypeAndName(name, 'ifis');
-    ifisevent.forEach(element => {
-        if(element.condition){
-            element.callback(value);
-        }
-    });
-}
 
-
-
-
-module.exports = { setprop, getprop, onchange, ifis }
+module.exports = { setprop, getprop, onchange }

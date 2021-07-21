@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "build": "gulp build"
+    "build": "gulp build",
+    "publish": "npm publish --access publish"
   },
   "repository": {
     "type": "git",

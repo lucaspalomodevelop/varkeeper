@@ -33,6 +33,11 @@ Prop.prototype = {
 }
 
 
+/**
+ * @param {String} name
+ * @param  {any} value
+ * @public
+ */
 function setprop(name, value) {
 
     if (value instanceof Function) {
@@ -65,7 +70,10 @@ function getEventsFromTypeAndName(name, type) {
     }
     return event;
 }
-
+/**
+ * @param {String} name
+ * @public
+ */
 function getprop(name) {
     let result = props.find(x => x.name === name)
     if (result != undefined) {
@@ -77,10 +85,20 @@ function getprop(name) {
     }
 }
 
+/**
+ * @param {String} name
+ * @public
+ */
 function deleteprop(name) {
     props = props.filter(x => x.name !== name);
 }
 
+/**
+ * @param {String} eventtype
+ * @param {String} name
+ * @param {Function} callback
+ * @public
+ */
 function on(eventname, name, callback) {
     events.push({ type: eventname, callback: callback, name: name });
 }

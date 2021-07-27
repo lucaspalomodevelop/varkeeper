@@ -1,40 +1,38 @@
 let props = [];
 let events = [];
 
-// Prop = function(name, value = undefined) {
-//     this._init(name, value);
-//   //  props.push({ name: name, value: value });
-// }
-// Prop.prototype = {
+Prop = function (name, value = undefined) {
+    this._init(name, value);
+}
+Prop.prototype = {
 
-//   constructor: Prop,
-//   name: null,
-//   value: null,
-//   _init: function(name, value = undefined) {
+    constructor: Prop,
+    name: null,
+    value: null,
+    _init: function (name, value = undefined) {
 
-//     if(value === undefined && props.find(x => x.name === name) !== undefined)
-//     {
-//         myprop = props.find(x => x.name === name);
-//         console.log(myprop)
-//         setprop(name, myprop.value);    
-//     }
-//     else
-//     {
-//         setprop(name, value);
-//     }
-//     // 
-//     // this.value = value;
-
-//   },
-//    set: function (value) {setprop(this.name, value);},
-//    get: function () {return getprop(this.name);},
-//    delete: function () {deleteprop(this.name);},
-//     on: function(eventname, callback) {
-//     events.push({ type: eventname, callback: callback, name: this.name });
-//   }
-// }
+        if ((value === undefined || value === null) && props.find(x => x.name === name) !== undefined) {
+            myprop = props.find(x => x.name === name);
+            setprop(name, myprop.value);
+            this.value = myprop.value;
+        }
+        else {
+            setprop(name, value);
+            this.value = value;
+        }
 
 
+        this.name = name;
+
+    },
+    set: function (value) { setprop(this.name, value); },
+    get: function () { return getprop(this.name); },
+    delete: function () { deleteprop(this.name); },
+    on: function (eventname, callback) { on(this.name, eventname, callback); }
+}
+
+
+// OLD
 function setprop(name, value) {
 
     if (value instanceof Function) {
@@ -42,63 +40,68 @@ function setprop(name, value) {
     }
 
 
-   var myprop = props.find(x => x.name === name)
+    var myprop = props.find(x => x.name === name)
 
 
-   if(myprop != undefined)
-   {
-     myprop.value = value;
-   }
-   else
-   {
-   // props.push(new Prop(name, value));
-    props.push({ name: name, value: value });
-   }
+    if (myprop != undefined) {
+        on_function('set', name, value);
+        if (value !== myprop.value) {
+            myprop.value = value;
+            on_function('change', name, value);
+        }
+    }
+    else {
+        props.push({ name: name, value: value });
+        on_function('create', name, value);
+    }
 
-    onchange_func(name, value);
-   
+
 }
 
-function getEventsFromTypeAndName(name,type) {
+function getEventsFromTypeAndName(name, type) {
     let event = [];
     if (events.length > 0) {
-     event = events.filter(x => x.name === name && x.type === type)
+        event = events.filter(x => x.name === name && x.type === type)
     }
     return event;
 }
 
 function getprop(name) {
-    console.log(props)
     let result = props.find(x => x.name === name)
-    if(result != undefined)
-    {
+    if (result != undefined) {
+        on_function('get', name, result.value);
         return result.value;
     }
-    else
-    {
+    else {
         return undefined;
     }
 }
 
 function deleteprop(name) {
-    let index = props.indexOf(props.find(x => x.name === name));
-    props.splice(index,1);
+    props = props.filter(x => x.name !== name);
 }
 
-function onchange(name, callback) {
-    events.push({ name: name, callback: callback, type: 'onchange' });
+function on(eventname, name, callback) {
+    events.push({ type: eventname, callback: callback, name: name });
 }
 
-function onchange_func(name,value){
+function on_function(eventname, name, value) {
+    let events = getEventsFromTypeAndName(name, eventname);
     if (events.length > 0) {
-        let onchangeevents = getEventsFromTypeAndName(name, 'onchange');
+        switch (eventname) {
+            case 'change':
+            case 'create':
+            case 'get':
+            case 'set':
+                events.forEach(x => x.callback(value));
+                break;
 
-        onchangeevents.forEach(element => {
-            element.callback(value);
-        });
+            default:
+                events.forEach(x => x.callback({ err: 404, msg: 'Event not found' }));
+                break;
+        }
     }
 }
 
 
-
-module.exports = { setprop, getprop, onchange, deleteprop }
+module.exports = { setprop, getprop, deleteprop, on, Prop }

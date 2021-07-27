@@ -6,12 +6,10 @@ const assertArrays = require('chai-arrays');
 chai.use(assertArrays);
 let varkeeper = require("../src/index.js");
 
-
-
 describe('varkeeper', () => {
     describe('setprop', () => {
         it('will set a prop', () => {
-           varkeeper.setprop('test', 'value');
+            varkeeper.setprop('test', 'value');
             //let a = new varkeeper.Prop('test')
             assert.equal(varkeeper.getprop("test"), 'value');
         });
@@ -27,10 +25,10 @@ describe('varkeeper', () => {
             expect(varkeeper.getprop('array')).to.be.an('array');
         });
         it('will slice a array-prop', () => {
-            varkeeper.setprop('array', [1,2,3,4]);
+            varkeeper.setprop('array', [1, 2, 3, 4]);
             let x = varkeeper.getprop('array');
-            let y = x.slice(0,2);
-            expect(y).to.be.eql([1,2]);
+            let y = x.slice(0, 2);
+            expect(y).to.be.eql([1, 2]);
         });
 
     });
@@ -53,29 +51,26 @@ describe('varkeeper', () => {
     describe('onchange', () => {
         it('will call funtion by change prop value', () => {
             let a = false;
-            varkeeper.onchange('test', () => {a = true});
+            varkeeper.on('change', 'test', () => { a = true });
             varkeeper.setprop('test', 'value');
+            varkeeper.setprop('test', 'value2');
             assert.equal(a, true);
         });
     });
 
-    describe.skip('varkeeper porp class', () => {
-        it("", () => {
-            console.log("varkeeper")
-            varkeeper.setprop("array","blub")
-            varkeeper.getprop("array");
-            console.log("prop class")
-            var a = new varkeeper.Prop("array",undefined)
-            a.get();
-            a.on("onchange",()=>{
-                console.log("onchange")
-            })
-            console.log("first",a.get());
-            a.set("B")
-            console.log(a.get());
-            varkeeper.setprop("array","C")
-            console.log(a.get());
+    describe('varkeeper porp class', () => {
+        it(" will setprop an prop of same value must be the same #1", () => {
+           varkeeper.setprop('test','value')
+           let x = new varkeeper.Prop('test');
+           assert.equal(x.get(), varkeeper.getprop('test'));
         })
+
+        it(" will setprop an prop of same value must be the same #2", () => {
+           let x = new varkeeper.Prop('test', 'value');
+           assert.equal(x.get(), varkeeper.getprop('test'));
+        })
+
+
     })
 
 });

@@ -27,7 +27,7 @@ yarn add varkeeper
 ```javascript
 var vk = require('varkeeper');
 ```
-### Functional
+## Functional
 
 ### set propertie
 

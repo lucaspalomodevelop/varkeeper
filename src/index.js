@@ -60,7 +60,6 @@ function setprop(name, value) {
         on_function('create', name, value);
     }
 
-
 }
 
 function getEventsFromTypeAndName(name, type) {

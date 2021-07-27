@@ -1,7 +1,7 @@
 {
   "name": "varkeeper",
-  "version": "1.0.1",
-  "description": "varkeeper is A tool for handle vars global in every module",
+  "version": "1.0.3",
+  "description": "varkeeper is A tool for handle vars global ",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -19,7 +19,7 @@
   "scripts": {
     "test": "mocha",
     "build": "gulp build",
-    "publish": "npm publish --access publish"
+    "publish": "npm run build && npm publish --access publish"
   },
   "repository": "git+https://github.com/lucaspalomodevelop/varkeeper.git",
   "keywords": [
@@ -33,5 +33,7 @@
   "bugs": {
     "url": "https://github.com/lucaspalomodevelop/varkeeper/issues"
   },
-  "homepage": "https://github.com/lucaspalomodevelop/varkeeper#readme"
-}
+  "homepage": "https://github.com/lucaspalomodevelop/varkeeper#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  }}

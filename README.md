@@ -27,7 +27,7 @@ yarn add varkeeper
 ```javascript
 var vk = require('varkeeper');
 ```
-## Functional
+### Functional
 
 ### set propertie
 
@@ -57,13 +57,13 @@ evnetTypes:
 
 ## OOP
 
-## init propertie
+### init propertie
 
 ```javascript
 var vkObj = new vk.Prop("varName", "varValue");
 ```
 
-## reference on exist propertie
+### reference on exist propertie
 
 ```javascript
 var vkObj = new vk.Prop("varName");

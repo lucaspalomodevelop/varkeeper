@@ -17,6 +17,7 @@ Prop.prototype = {
             this.value = myprop.value;
         }
         else {
+
             setprop(name, value);
             this.value = value;
         }
@@ -32,7 +33,6 @@ Prop.prototype = {
 }
 
 
-// OLD
 function setprop(name, value) {
 
     if (value instanceof Function) {

@@ -73,4 +73,52 @@ describe('varkeeper', () => {
 
     })
 
+    
+    describe('varkeeper porp class on set', () => {
+        it(" on set  eq value", () => {
+            let result = false
+            varkeeper.on('set', 'setprop', (value) => {
+                result = true;
+            });
+           let x = new varkeeper.Prop("setprop","firstvalue");
+           x.set("firstvalue");
+           assert.equal(result, true);
+        })
+
+        it(" on set not eq value", () => {
+            let result = false
+            varkeeper.on('set', 'setprop', (value) => {
+                result = true;
+            });
+           let x = new varkeeper.Prop("setprop","firstvalue");
+           x.set("secoundvalue");
+           assert.equal(result, true);
+        })
+
+    })
+
+
+    describe('varkeeper porp class on change', () => {
+        it(" on set  eq value", () => {
+            let result = true;
+            varkeeper.on('change', 'changeprop', (value) => {
+                result = false;
+            });
+           let x = new varkeeper.Prop("changeprop","firstvalue");
+           x.set("firstvalue");
+           assert.equal(result, true);
+        })
+
+        it(" on set not eq value", () => {
+            let result = false
+           let x = new varkeeper.Prop("changeprop","firstvalue");
+           varkeeper.on('change', 'changeprop', (value) => {
+            result = true;
+        });
+           x.set("secoundvalue");
+           assert.equal(result, true);
+        })
+
+    })
+
 });

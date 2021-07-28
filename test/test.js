@@ -133,4 +133,13 @@ describe("varkeeper", () => {
       assert.equal(result, true);
     });
   });
+
+  describe("varkeeper use funtion OOP", () => {
+      let x = new varkeeper.Prop("test", "value");
+      x.use((value) => {
+        console.log(value);
+      });
+  });
+
+
 });

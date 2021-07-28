@@ -35,6 +35,9 @@ Prop.prototype = {
   on: function (eventname, callback) {
     on(this.name, eventname, callback);
   },
+  use: function (callback) {
+    use(this.name, callback);
+  },
 };
 
 /**
@@ -116,6 +119,14 @@ function on_function(eventname, name, value) {
         break;
     }
   }
+}
+
+function use(name, callback) {
+  let value = getprop(name);
+
+  callback(value);
+
+  deleteprop(name);
 }
 
 module.exports = { setprop, getprop, deleteprop, on, Prop };

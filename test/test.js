@@ -103,6 +103,17 @@ describe("varkeeper", () => {
       assert.equal(result, true);
     });
 
+    it(" on create  eq value OOP", () => {
+      let result = false;
+      let x = new varkeeper.Prop("changepropoop", "firstvalue");
+      x.on("change", (value) => {
+        result = true;
+      });
+      x.set("firstvalue2");
+  
+      assert.equal(result, true);
+    });
+
     it(" on change not eq value", () => {
       let result = false;
       let x = new varkeeper.Prop("changeprop", "firstvalue");
@@ -120,7 +131,7 @@ describe("varkeeper", () => {
       varkeeper.on("create", "createprop", (value) => {
         result = true;
       });
-      let x = varkeeper.setprop("createprop");
+      let x = varkeeper.setprop("createprop", "hallo");
       assert.equal(result, true);
     });
 
@@ -134,12 +145,30 @@ describe("varkeeper", () => {
     });
   });
 
-  describe("varkeeper use funtion OOP", () => {
+  describe("use funtion", () => {
+    it("OOP", () => {
       let x = new varkeeper.Prop("test", "value");
       x.use((value) => {
         console.log(value);
       });
+      assert.equal(x.get(), undefined);
+    });
+    it("OOP 2", () => {
+      varkeeper.use(new varkeeper.Prop("test2", "value2"), (value) => {
+        console.log(value);
+      });
+      assert.equal(varkeeper.getprop("test2"), undefined);
+    });
+
+    it.skip("OOP 3", () => {
+      varkeeper.use(
+        (function () {
+          return "hallo";
+        })(),
+        (value) => {
+          console.log(value);
+        }
+      );
+    });
   });
-
-
 });

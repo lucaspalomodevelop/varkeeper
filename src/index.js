@@ -9,6 +9,8 @@ Prop.prototype = {
   name: null,
   value: null,
   _init: function (name, value = undefined) {
+    console.log(events);
+
     if (
       (value === undefined || value === null) &&
       props.find((x) => x.name === name) !== undefined
@@ -33,7 +35,7 @@ Prop.prototype = {
     deleteprop(this.name);
   },
   on: function (eventname, callback) {
-    on(this.name, eventname, callback);
+    on(eventname, this.name, callback);
   },
   use: function (callback) {
     use(this.name, callback);
@@ -122,11 +124,22 @@ function on_function(eventname, name, value) {
 }
 
 function use(name, callback) {
+  if (name instanceof Prop) {
+    name = name.name;
+  }
+
   let value = getprop(name);
+
+  if (value === undefined) {
+    value = name;
+    const { v4: uuidv4 } = require("uuid");
+    name = uuidv4();
+    setprop(name, value);
+  }
 
   callback(value);
 
   deleteprop(name);
 }
 
-module.exports = { setprop, getprop, deleteprop, on, Prop };
+module.exports = { setprop, getprop, deleteprop, on, use, Prop };

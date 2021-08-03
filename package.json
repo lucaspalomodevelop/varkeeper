@@ -1,6 +1,6 @@
 {
   "name": "varkeeper",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "varkeeper is A tool for handle vars global in different modules ",
   "main": "dist/index.js",
   "files": [
@@ -37,5 +37,8 @@
   "homepage": "https://github.com/lucaspalomodevelop/varkeeper#readme",
   "engines": {
     "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
   }
 }

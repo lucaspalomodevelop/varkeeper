@@ -14,7 +14,7 @@ varkeeper is A tool for handle vars global in different modules
 
 ### Installation
 
-You can colormizer install using [npm](https://www.npmjs.com/package/varkeeper) or [yarn](https://yarnpkg.com/package/varkeeper).
+You can varkeeper install using [npm](https://www.npmjs.com/package/varkeeper) or [yarn](https://yarnpkg.com/package/varkeeper).
 
 ```
 npm install varkeeper
@@ -25,8 +25,9 @@ yarn add varkeeper
 ```
 
 ```javascript
-var vk = require('varkeeper');
+var vk = require("varkeeper");
 ```
+
 ## Functional
 
 ### set propertie

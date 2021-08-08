@@ -1,6 +1,6 @@
 {
   "name": "varkeeper",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "varkeeper is A tool for handle vars global in different modules ",
   "main": "dist/index.js",
   "files": [

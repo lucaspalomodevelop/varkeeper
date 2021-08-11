@@ -8,13 +8,13 @@
 
 ## Desciption
 
-varkeeper is A tool for handle vars global in different modules
+varkeeper is A tool for handling vars globally in different modules.
 
 ## Usage
 
 ### Installation
 
-You can varkeeper install using [npm](https://www.npmjs.com/package/varkeeper) or [yarn](https://yarnpkg.com/package/varkeeper).
+You can install varkeeper using [npm](https://www.npmjs.com/package/varkeeper) or [yarn](https://yarnpkg.com/package/varkeeper).
 
 ```
 npm install varkeeper
@@ -30,13 +30,13 @@ var vk = require("varkeeper");
 
 ## Functional
 
-### set propertie
+### set property
 
 ```javascript
 vk.setprop("varName", "varValue");
 ```
 
-### get propertie
+### get property
 
 ```javascript
 vk.getprop("varName");
@@ -50,7 +50,7 @@ vk.on("eventType",'varName', function(value){
 }
 ```
 
-evnetTypes:
+eventTypes:
 
 - set
 - get
@@ -58,25 +58,25 @@ evnetTypes:
 
 ## OOP
 
-### init propertie
+### init property
 
 ```javascript
 var vkObj = new vk.Prop("varName", "varValue");
 ```
 
-### reference on exist propertie
+### reference on existing property
 
 ```javascript
 var vkObj = new vk.Prop("varName");
 ```
 
-### set propertie
+### set property
 
 ```javascript
 vkObj.set("varValue");
 ```
 
-### get propertie
+### get property
 
 ```javascript
 var vkObj = new vk.Prop("varName", "varValue");
@@ -91,7 +91,7 @@ vkObj.on("eventType", function (value) {
 });
 ```
 
-evnetTypes:
+eventTypes:
 
 - set
 - get

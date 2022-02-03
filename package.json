@@ -2,9 +2,9 @@
   "name": "varkeeper",
   "version": "2.1.1",
   "description": "varkeeper is A tool for handle vars global in different modules ",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "files": [
-    "dist",
+    "src",
     "package.json",
     "README.md",
     "LICENSE"
@@ -18,7 +18,7 @@
     "prettier": "2.3.2"
   },
   "scripts": {
-    "test": "mocha",
+    "test": " NODE_ENV=test mocha",
     "build": "gulp build",
     "publish": "npm run build && npm publish --access publish"
   },
